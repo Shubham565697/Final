@@ -7,23 +7,5 @@
     android:orientation="vertical"
     tools:context=".MainActivity">
 
-    <WebView
-        android:id="@+id/frameLayout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
-        />
-
-    <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:id="@+id/navView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="4dp"
-        android:background="#2570E1"
-        android:padding="3dp"
-        app:itemIconTint="#83000000"
-        app:itemRippleColor="@color/white"
-        app:itemTextColor="#FFFFFF"
-        app:menu="@menu/menu" />
 
 </LinearLayout>
