@@ -43,7 +43,10 @@ class MainActivity : AppCompatActivity() {
 
 
 
+btn.setOnClickListener(){
 
+    startActivity(Intent(this@MainActivity,sign_up::class.java))
+}
     }
 
 
