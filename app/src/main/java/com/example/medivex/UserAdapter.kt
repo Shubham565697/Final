@@ -95,7 +95,24 @@ fullname.setText(current.fullname)
             }
 
 
+            btnSign.setOnClickListener(){
 
+                if(male.isChecked)
+                {
+                    gender ="Male"
+                    img="https://png.pngtree.com/png-vector/20190411/ourmid/pngtree-business-male-icon-vector-png-image_916468.jpg"
+                }
+                if(female.isChecked)
+                {
+                    gender ="female"
+                    img="https://cdn1.iconfinder.com/data/icons/website-internet/48/website_-_female_user-512.png"
+
+                }
+                if(other.isChecked)
+                {
+                    gender="others"
+                    img=""
+                }
 
 
                 lst[position].fullname = fullname.text.toString()
