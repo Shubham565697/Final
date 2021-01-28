@@ -27,27 +27,7 @@ class sign_up : AppCompatActivity() {
         val male :RadioButton = findViewById(R.id.male)
         val female :RadioButton = findViewById(R.id.female)
         val other :RadioButton = findViewById(R.id.other)
-        btnSign.setOnClickListener() {
-            var gender =""
-            var img=""
 
-
-            if(male.isChecked)
-            {
-                gender ="Male"
-                img="https://png.pngtree.com/png-vector/20190411/ourmid/pngtree-business-male-icon-vector-png-image_916468.jpg"
-            }
-            if(female.isChecked)
-            {
-                gender ="female"
-                img="https://cdn1.iconfinder.com/data/icons/website-internet/48/website_-_female_user-512.png"
-
-            }
-            if(other.isChecked)
-            {
-                gender="others"
-                img=""
-            }
 
 
 
