@@ -13,7 +13,7 @@ interface UserDAO {
    suspend fun login(username:String,password:String ):User
    @Query("select * from User")
    suspend fun getData():MutableList<User>
-   @Delete
-   suspend fun  delete(user:User)
 
+   @Update
+   suspend fun update(user:User)
 }
