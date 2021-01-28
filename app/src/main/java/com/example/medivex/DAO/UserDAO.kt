@@ -15,6 +15,5 @@ interface UserDAO {
    suspend fun getData():MutableList<User>
    @Delete
    suspend fun  delete(user:User)
-   @Update
-   suspend fun update(user:User)
+
 }

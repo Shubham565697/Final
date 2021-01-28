@@ -87,7 +87,10 @@ withContext(Dispatchers.Main){
 //
         }
 
-
+        btnLogin.setOnClickListener() {
+            val intent = Intent(this, login::class.java)
+            startActivity(intent)
+        }
         }
 
 
