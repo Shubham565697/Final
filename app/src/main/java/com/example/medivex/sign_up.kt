@@ -75,21 +75,12 @@ class sign_up : AppCompatActivity() {
         if(others.isChecked){
             gender ="others"
         }
+        val user = Users(fname=fname, lname=lname, gender = gender,address = address,phone = phone, username=username, password =password,email =type )
+        if(password!=confirmPassword)
+        {
+            Toast.makeText(this, "Password does not match", Toast.LENGTH_SHORT).show()
+        }
 
-        else{
-            try{
-                val userRepo = UserRepository()
-                CoroutineScope(Dispatchers.IO).launch {
-                    val response = userRepo.registerUser(user)
-                    if(response.success==true) {
-                        withContext(Dispatchers.Main) {
-                            Toast.makeText(this@sign_up, "User Registerred", Toast.LENGTH_SHORT).show()
-                        }
-                    }
-
-
-                }
-            }
             catch(ex:Exception)
             {
                 CoroutineScope(Dispatchers.IO).launch {
