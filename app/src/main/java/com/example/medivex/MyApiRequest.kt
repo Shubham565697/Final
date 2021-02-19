@@ -10,18 +10,6 @@ import java.io.IOException
 abstract class MyApiRequest{
 
 
-    suspend fun <T : Any> apiRequest(call: suspend () -> Response<T>): T {
-        val response = call.invoke()
-        if (response.isSuccessful) {
-            return response.body()!!
-        } else {
-            //   val error: String = response.errorBody().toString()
-            val error = response.errorBody()?.string()
-            val message = StringBuilder()
-            error?.let {
 
-            message.append("Error code : ${response.code()}")
-            throw IOException(message.toString())
-        }
     }
 }
