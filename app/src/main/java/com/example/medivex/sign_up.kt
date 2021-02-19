@@ -80,16 +80,21 @@ class sign_up : AppCompatActivity() {
         {
             Toast.makeText(this, "Password does not match", Toast.LENGTH_SHORT).show()
         }
-
-            catch(ex:Exception)
-            {
+        else{
+            try{
+                val userRepo = UserRepository()
                 CoroutineScope(Dispatchers.IO).launch {
-                    withContext(Dispatchers.Main){
-                        Toast.makeText(this@sign_up, "User already exists", Toast.LENGTH_SHORT).show()
+                    val response = userRepo.registerUser(user)
+                    if(response.success==true) {
+                        withContext(Dispatchers.Main) {
+                            Toast.makeText(this@sign_up, "User Registerred", Toast.LENGTH_SHORT).show()
+                        }
                     }
-                }
 
+
+                }
             }
+
 
 
         }
