@@ -51,19 +51,19 @@ class sign_up : AppCompatActivity() {
         btnAddStuden = findViewById(R.id.btnAddStuden)
     }
 
-    fun register(){
-        val fname = etFname.text.toString()
-        val lname = etLname.text.toString()
-        val address = etAddress.text.toString()
-        val phone = etPhone.text.toString()
-        val username = etUsername.text.toString()
-        val password = etPassword.text.toString()
-        val confirmPassword = etConfirmPassword.text.toString()
-        val male : RadioButton = findViewById(R.id.male)
-        val female : RadioButton = findViewById(R.id.female)
-        val others : RadioButton = findViewById(R.id.others)
-        var gender =""
 
+        val type="Customer@mail.com"
+        if(male.isChecked)
+        {
+            gender ="Male"
+        }
+        if(female.isChecked)
+        {
+            gender ="Female"
+        }
+        if(others.isChecked){
+            gender ="others"
+        }
         val user = Users(fname=fname, lname=lname, gender = gender,address = address,phone = phone, username=username, password =password,email =type )
         if(password!=confirmPassword)
         {
