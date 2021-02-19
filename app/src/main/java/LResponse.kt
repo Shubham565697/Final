@@ -1,5 +1,6 @@
 data class LResponse(
-   g
+    val success:Boolean?=null,
+    val token:String?=null
 
 ) {
 }
