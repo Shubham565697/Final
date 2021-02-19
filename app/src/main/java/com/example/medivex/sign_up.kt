@@ -25,20 +25,7 @@ class sign_up : AppCompatActivity() {
     private lateinit var etConfirmPassword: EditText
     private lateinit var btnAddStudent: Button
     private lateinit var btnAddStuden: Button
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_sign_up)
-        bind()
 
-        btnAddStudent.setOnClickListener(){
-            register()
-        }
-        btnAddStuden.setOnClickListener(){
-
-         startActivity(Intent(this@sign_up,login::class.java))
-        }
-
-    }
     fun bind(){
         etFname = findViewById(R.id.etFname)
         etLname = findViewById(R.id.etLname)
