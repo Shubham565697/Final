@@ -96,7 +96,10 @@ class sign_up : AppCompatActivity() {
             }
             catch(ex:Exception)
             {
-
+                CoroutineScope(Dispatchers.IO).launch {
+                    withContext(Dispatchers.Main){
+                        Toast.makeText(this@sign_up, "User already exists", Toast.LENGTH_SHORT).show()
+                    }
                 }
 
             }

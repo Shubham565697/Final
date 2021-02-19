@@ -59,10 +59,7 @@ class login : AppCompatActivity() {
 
 
         }
-        btnSign.setOnClickListener() {
-            val intent = Intent(this, sign_up::class.java)
-            startActivity(intent)
-        }
+
     }
     private fun requestPermission() {
         ActivityCompat.requestPermissions(
