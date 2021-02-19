@@ -8,14 +8,11 @@ import retrofit2.http.POST
 interface MedvixApi {
 
 
+    @POST("/insert")
 
 
-    @FormUrlEncoded
-    @POST( "/login")
-    suspend fun  checkUser(
+    suspend fun registerUsers(@Body user: Users):Response<LResponse>
 
-        @Field("username") username: String,
-        @Field("password") password: String
-    ) : Response<LResponse>
+  Response<LResponse>
 
 }
