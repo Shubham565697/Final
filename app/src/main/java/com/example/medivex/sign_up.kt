@@ -25,18 +25,21 @@ class sign_up : AppCompatActivity() {
     private lateinit var etConfirmPassword: EditText
     private lateinit var btnAddStudent: Button
     private lateinit var btnAddStuden: Button
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_sign_up)
+        bind()
 
-    fun bind(){
-        etFname = findViewById(R.id.etFname)
-        etLname = findViewById(R.id.etLname)
-        etAddress = findViewById(R.id.etAdress)
-        etPhone = findViewById(R.id.etPhone)
-        etUsername = findViewById(R.id.etUsername)
-        etPassword = findViewById(R.id.etPassword)
-        etConfirmPassword = findViewById(R.id.etConfirmPassword)
-        btnAddStudent = findViewById(R.id.btnAddStudent)
-        btnAddStuden = findViewById(R.id.btnAddStuden)
+        btnAddStudent.setOnClickListener(){
+            register()
+        }
+        btnAddStuden.setOnClickListener(){
+
+         startActivity(Intent(this@sign_up,login::class.java))
+        }
+
     }
+
 
     fun register(){
         val fname = etFname.text.toString()
