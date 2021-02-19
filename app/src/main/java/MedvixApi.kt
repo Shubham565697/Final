@@ -13,6 +13,12 @@ interface MedvixApi {
 
     suspend fun registerUsers(@Body user: Users):Response<LResponse>
 
-  Response<LResponse>
+    @FormUrlEncoded
+    @POST( "/login")
+    suspend fun  checkUser(
+
+        @Field("username") username: String,
+        @Field("password") password: String
+    ) : Response<LResponse>
 
 }
