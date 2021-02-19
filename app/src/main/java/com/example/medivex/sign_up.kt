@@ -39,7 +39,17 @@ class sign_up : AppCompatActivity() {
         }
 
     }
-
+    fun bind(){
+        etFname = findViewById(R.id.etFname)
+        etLname = findViewById(R.id.etLname)
+        etAddress = findViewById(R.id.etAdress)
+        etPhone = findViewById(R.id.etPhone)
+        etUsername = findViewById(R.id.etUsername)
+        etPassword = findViewById(R.id.etPassword)
+        etConfirmPassword = findViewById(R.id.etConfirmPassword)
+        btnAddStudent = findViewById(R.id.btnAddStudent)
+        btnAddStuden = findViewById(R.id.btnAddStuden)
+    }
 
     fun register(){
         val fname = etFname.text.toString()
@@ -53,18 +63,7 @@ class sign_up : AppCompatActivity() {
         val female : RadioButton = findViewById(R.id.female)
         val others : RadioButton = findViewById(R.id.others)
         var gender =""
-        val type="Customer@mail.com"
-        if(male.isChecked)
-        {
-            gender ="Male"
-        }
-        if(female.isChecked)
-        {
-            gender ="Female"
-        }
-        if(others.isChecked){
-            gender ="others"
-        }
+
         val user = Users(fname=fname, lname=lname, gender = gender,address = address,phone = phone, username=username, password =password,email =type )
         if(password!=confirmPassword)
         {
