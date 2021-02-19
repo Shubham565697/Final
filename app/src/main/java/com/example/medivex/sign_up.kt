@@ -8,90 +8,104 @@ import android.widget.EditText
 import android.widget.RadioButton
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
-import com.example.medivex.Entity.User.User
+//import com.example.medivex.Entity.User.User
+import com.example.medivex.Models.Users
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
 class sign_up : AppCompatActivity() {
+    private lateinit var etFname: EditText
+    private lateinit var etLname: EditText
+    private lateinit var etAddress: EditText
+    private lateinit var etPhone: EditText
+    private lateinit var etUsername: EditText
+    private lateinit var etPassword: EditText
+    private lateinit var etConfirmPassword: EditText
+    private lateinit var btnAddStudent: Button
+    private lateinit var btnAddStuden: Button
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_sign_up)
-        var btnSign: Button = findViewById(R.id.btnSignUp)
-        var btnLogin: Button = findViewById(R.id.btnLogin)
-        val fullname :EditText = findViewById(R.id.Fullname)
-        val username :EditText = findViewById(R.id.Username)
-        val password :EditText = findViewById(R.id.Password)
-        val cpassword :EditText = findViewById(R.id.CPassword)
-        val male :RadioButton = findViewById(R.id.male)
-        val female :RadioButton = findViewById(R.id.female)
-        val other :RadioButton = findViewById(R.id.other)
-        btnSign.setOnClickListener() {
-            var gender =""
-            var img=""
+        bind()
 
+        btnAddStudent.setOnClickListener(){
+            register()
+        }
+        btnAddStuden.setOnClickListener(){
 
-            if(male.isChecked)
-            {
-                gender ="Male"
-                img="https://png.pngtree.com/png-vector/20190411/ourmid/pngtree-business-male-icon-vector-png-image_916468.jpg"
-            }
-            if(female.isChecked)
-            {
-                gender ="female"
-                img="https://cdn1.iconfinder.com/data/icons/website-internet/48/website_-_female_user-512.png"
-
-            }
-            if(other.isChecked)
-            {
-                gender="others"
-                img=""
-            }
-
-
-
-CoroutineScope(Dispatchers.IO).launch {
-    UserDB.getInstance(this@sign_up ).getUserDAO().insert(User(fullname.text.toString(),gender,username.text.toString(),password.text.toString(),img))
-withContext(Dispatchers.Main){
-    Toast.makeText(this@sign_up, "User Registered", Toast.LENGTH_SHORT).show()
-
-}
-
-}
-
-
-
-
-
-
-
-//            val d = AlertDialog.Builder(this)
-//            d.setTitle("Login Confirmation")
-//
-//            d.setMessage("Do you want to login now?")
-//            d.setPositiveButton("Yes"){dialog,which->
-//
-//                startActivity(Intent(this@sign_up,login::class.java))
-//                //a.add(food.id)
-//
-//
-//            }
-//            d.setNegativeButton("No"){dialog, which ->
-//
-//            }
-//            val alert = d.create()
-//
-//            alert.setCancelable(true)
-//            alert.show()
-//
+         startActivity(Intent(this@sign_up,login::class.java))
         }
 
-        btnLogin.setOnClickListener() {
-            val intent = Intent(this, login::class.java)
-            startActivity(intent)
+    }
+    fun bind(){
+        etFname = findViewById(R.id.etFname)
+        etLname = findViewById(R.id.etLname)
+        etAddress = findViewById(R.id.etAdress)
+        etPhone = findViewById(R.id.etPhone)
+        etUsername = findViewById(R.id.etUsername)
+        etPassword = findViewById(R.id.etPassword)
+        etConfirmPassword = findViewById(R.id.etConfirmPassword)
+        btnAddStudent = findViewById(R.id.btnAddStudent)
+        btnAddStuden = findViewById(R.id.btnAddStuden)
+    }
+
+    fun register(){
+        val fname = etFname.text.toString()
+        val lname = etLname.text.toString()
+        val address = etAddress.text.toString()
+        val phone = etPhone.text.toString()
+        val username = etUsername.text.toString()
+        val password = etPassword.text.toString()
+        val confirmPassword = etConfirmPassword.text.toString()
+        val male : RadioButton = findViewById(R.id.male)
+        val female : RadioButton = findViewById(R.id.female)
+        val others : RadioButton = findViewById(R.id.others)
+        var gender =""
+        val type="Customer@mail.com"
+        if(male.isChecked)
+        {
+            gender ="Male"
         }
+        if(female.isChecked)
+        {
+            gender ="Female"
         }
+        if(others.isChecked){
+            gender ="others"
+        }
+        val user = Users(fname=fname, lname=lname, gender = gender,address = address,phone = phone, username=username, password =password,email =type )
+        if(password!=confirmPassword)
+        {
+            Toast.makeText(this, "Password does not match", Toast.LENGTH_SHORT).show()
+        }
+        else{
+            try{
+                val userRepo = UserRepository()
+                CoroutineScope(Dispatchers.IO).launch {
+                    val response = userRepo.registerUser(user)
+                    if(response.success==true) {
+                        withContext(Dispatchers.Main) {
+                            Toast.makeText(this@sign_up, "User Registerred", Toast.LENGTH_SHORT).show()
+                        }
+                    }
 
 
+                }
+            }
+            catch(ex:Exception)
+            {
+                CoroutineScope(Dispatchers.IO).launch {
+                    withContext(Dispatchers.Main){
+                        Toast.makeText(this@sign_up, "User already exists", Toast.LENGTH_SHORT).show()
+                    }
+                }
+
+            }
+
+
+        }
+
+    }
     }

@@ -4,6 +4,8 @@ import android.content.Intent
 import android.content.pm.PackageManager
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.webkit.WebView
+import android.widget.ImageButton
 import androidx.core.app.ActivityCompat
 
 class PermissionActivity : AppCompatActivity() {
@@ -18,12 +20,18 @@ class PermissionActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_permission)
 
-        // Check for permission
-        if (!hasPermission()) {
-            requestPermission()
-            startActivity(Intent(this@PermissionActivity,login::class.java))
-
+        val web:WebView = findViewById(R.id.web)
+        web.loadUrl("https://www.clinicone.com.np/clinicone-pharmacy-kathmandu/")
+        var reg: ImageButton = this.findViewById(R.id.reg)
+        reg.setOnClickListener(){
+            startActivity(Intent(this@PermissionActivity,MainActivity::class.java))
         }
+//        // Check for permission
+//        if (!hasPermission()) {
+//            requestPermission()
+//            startActivity(Intent(this@PermissionActivity,login::class.java))
+//
+//        }
     }
 
     private fun requestPermission() {
