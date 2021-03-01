@@ -20,9 +20,13 @@ interface UserAPI {
 
 
     @Multipart
+    @PUT("photo/{id}")
+    suspend fun uploadImage(
+
+        @Path("id") id: String,
+        @Part file: MultipartBody.Part
+    ): Response<ImageResponse>
 
 
 
-    @GET("/product/all")
-    suspend fun get():Response<MedicineResponse>
 }
