@@ -53,10 +53,7 @@ class UserAdapter(var lst:MutableList<Medicine>, var context: Context):RecyclerV
         return lst.size
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): UserHolder {
-       val view = LayoutInflater.from(context).inflate(R.layout.mero_food,parent,false)
-        return UserHolder(view)
-    }
+
 
     override fun onBindViewHolder(holder: UserHolder, position: Int) {
 
