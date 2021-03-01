@@ -6,6 +6,11 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".sign_up">
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:src="@drawable/med"
+        android:id="@+id/img"/>
     <EditText
         android:hint="First Name"
         android:layout_margin="10dp"
@@ -76,7 +81,8 @@
         android:layout_margin="10dp"
         android:id="@+id/btnAddStudent"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>   <Button
+        android:layout_height="40dp"/>
+    <Button
         android:text="Login"
         android:layout_margin="10dp"
         android:id="@+id/btnAddStuden"

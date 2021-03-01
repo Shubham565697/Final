@@ -9,6 +9,7 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
 import androidx.core.app.ActivityCompat
+import com.example.medivex.repo.UserRepository
 //import com.example.medivex.Entity.User.User
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -41,10 +42,12 @@ class login : AppCompatActivity() {
         btnLogin.setOnClickListener(){
             val us = UserRepository()
             CoroutineScope(Dispatchers.IO).launch {
-                val response = us.checkUser(username.text.toString(), password.text.toString())
-                if (response.success == true) {
-                    var intent = Intent(this@login, MainActivity::class.java)
-                    startActivity(intent)
+                val response = us.Login(username.text.toString(), password.text.toString())
+                if (response.status == true) {
+                    withContext(Main){
+                        Toast.makeText(this@login, "${response.status}", Toast.LENGTH_SHORT).show()
+                    }
+
                 } else {
                     withContext(Main) {
 

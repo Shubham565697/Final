@@ -11,7 +11,7 @@ val address:String?=null,
 val phone :String?=null,
 val username :String?=null,
 val password :String?=null,
-val email:String?=null
+
 
 
 ) {

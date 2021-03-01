@@ -1,18 +1,14 @@
-
-
+package com.example.medivex.api
 
 import org.json.JSONException
 import org.json.JSONObject
 import retrofit2.Response
 import java.io.IOException
 
-
-abstract class MyApiRequest{
-
-
+abstract class MyApiRequest {
     suspend fun <T : Any> apiRequest(call: suspend () -> Response<T>): T {
-        val response = call.invoke()
-        if (response.isSuccessful) {
+        val response = call.invoke()//call garni kam garxa
+        if (response.isSuccessful) {//body ko response
             return response.body()!!
         } else {
             //   val error: String = response.errorBody().toString()
@@ -29,4 +25,8 @@ abstract class MyApiRequest{
             throw IOException(message.toString())
         }
     }
+
+
+
+
 }
