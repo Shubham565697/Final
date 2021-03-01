@@ -8,8 +8,7 @@ import com.example.medivex.Models.Medicine
 interface MedicineDAO  {
 
 
-    @Query("select * from Medicine")
-    suspend fun getUser():MutableList<Medicine>
+
 
 
 }
