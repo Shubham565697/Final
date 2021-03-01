@@ -28,5 +28,6 @@ interface UserAPI {
     ): Response<ImageResponse>
 
 
-
+    @GET("/product/all")
+    suspend fun get():Response<MedicineResponse>
 }

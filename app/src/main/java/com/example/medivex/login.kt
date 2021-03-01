@@ -67,12 +67,7 @@ class login : AppCompatActivity() {
             startActivity(intent)
         }
     }
-    private fun requestPermission() {
-        ActivityCompat.requestPermissions(
-            this@login,
-            permissions, 1
-        )
-    }
+
 
     private fun hasPermission(): Boolean {
         var hasPermission = true
