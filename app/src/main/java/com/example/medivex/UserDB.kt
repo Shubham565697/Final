@@ -38,9 +38,7 @@ abstract class UserDB:RoomDatabase() {
         }
 
 
-       fun builDatabase(context:Context):UserDB{
-           return Room.databaseBuilder(context,UserDB::class.java,"MedVix").build()
-       }
+
 
 
     }
