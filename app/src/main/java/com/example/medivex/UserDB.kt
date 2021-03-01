@@ -23,22 +23,12 @@ abstract class UserDB:RoomDatabase() {
 
 
 
-        fun getInstance(context:Context):UserDB{
-
-            if(instance==null)
-            {
-
-                synchronized(UserDB::class){
-                    instance= builDatabase(context)
-
-                }
-            }
-            return instance!!
-
-        }
 
 
 
+       fun builDatabase(context:Context):UserDB{
+           return Room.databaseBuilder(context,UserDB::class.java,"MedVix").build()
+       }
 
 
     }
